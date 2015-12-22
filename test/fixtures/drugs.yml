@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  drug_name: MyString
+  price: 9.99
+  available: false
+
+two:
+  drug_name: MyString
+  price: 9.99
+  available: false
