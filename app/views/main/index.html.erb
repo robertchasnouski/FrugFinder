@@ -1,0 +1,18 @@
+<% if notice %>
+<p id="notice"><%= notice %> </p>
+<% end %>
+
+
+<h1> Druggery Catalog </h1>
+<% cache ['main', Drug.latest] do %>
+<% @drugs.each do |drug| %>
+    <% cache ['entry',drug] do %>
+	<div class="entry">
+		<h3><%= drug.drug_name %></h3>
+		<div class="price_line">
+			<span class="price"><%= sprintf("$%0.02f",drug.price) %> </span>
+		</div>
+	</div>
+	<% end %>
+	<% end %>
+<% end %>
