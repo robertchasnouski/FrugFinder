@@ -1,8 +1,8 @@
 Drugs::Application.routes.draw do
-  resources :stores
-
-  resources :drugs
-
+  resources :stores, shallow: true do
+    resources :drugs#, only: [:index,:new, :create,  :update, :destroy]
+  end
+  #resources :drugs, only: [:show,:edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

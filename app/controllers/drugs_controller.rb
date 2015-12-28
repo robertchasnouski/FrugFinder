@@ -7,25 +7,21 @@ class DrugsController < ApplicationController
     @drugs = Drug.all
   end
 
-  # GET /drugs/1
-  # GET /drugs/1.json
   def show
   end
 
-  # GET /drugs/new
   def new
-    @drug = Drug.new
+    @store=Store.find(params[:store_id])
+    @drug = @store.drugs.build
   end
 
-  # GET /drugs/1/edit
   def edit
   end
 
-  # POST /drugs
-  # POST /drugs.json
   def create
-    @drug = Drug.new(drug_params)
-
+    @store=Store.find(params[:store_id])
+    @drug = @store.drugs.build(drug_params)
+    
     respond_to do |format|
       if @drug.save
         format.html { redirect_to @drug, notice: 'Drug was successfully created.' }
@@ -69,6 +65,6 @@ class DrugsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drug_params
-      params.require(:drug).permit(:drug_name, :price, :available)
+      params.require(:drug).permit(:drug_name, :price)
     end
 end
