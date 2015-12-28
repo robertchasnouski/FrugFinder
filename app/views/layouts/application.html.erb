@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>FrugFinder v0.0 Beta</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body class= "<%= controller.controller_name%>">
-<div id="banner">
-<%= image_tag("logo.png") %>
-<%= @page_title || "FrugfFinder" %>
-</div>
-<div id="columns">
-	<div id="side">
- 	    <ul>
- 	   		<li><a href="http://0.0.0.0:3000/">Home</a></li>
- 	   		<li><a href="http://0.0.0.0:3000/stores">List stores</a></li>
- 	   	</ul>
- 	</div>  
- 	<div id="main">
-		<%= yield %>
- 	</div>
-</div>
-</body>
+  <head>
+    <title>FrugFinder v0.0 Beta</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse bg-nav">
+
+        <div class="container">
+          <%= link_to @page_title || "FrugFinder",  '#', id:"logo" %>
+          <nav>
+            <ul class="nav pull-right">
+              <li><a  href="http://0.0.0.0:3000/">Home</a></li>
+              <li><a  href="http://0.0.0.0:3000/stores">List stores</a></li>
+            </ul>
+          </nav>
+        </div>
+
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
 </html>

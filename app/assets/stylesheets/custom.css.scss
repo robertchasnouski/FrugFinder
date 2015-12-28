@@ -1,0 +1,30 @@
+@import "bootstrap";
+
+/* Navigation bar*/
+.bg-nav {
+    background-color: #000000
+}
+
+html {
+    overflow-y: scroll
+}
+
+body {
+    padding-top: 60px
+}
+
+section {
+    overflow: auto
+}
+
+textarea {
+    overflow: auto
+}
+
+.center {
+    text-align: center
+}
+
+.center h1 {
+    margin-bottom: 10px
+}

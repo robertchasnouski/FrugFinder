@@ -11,7 +11,7 @@ class DrugsController < ApplicationController
   end
 
   def new
-    @store=Store.find(params[:store_id])
+    @store = Store.find(params[:store_id])
     @drug = @store.drugs.build
   end
 
