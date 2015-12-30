@@ -1,51 +1,54 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @store.name %>
+<p id="notice">
+    <%= notice %>
 </p>
-
+<h2> Store info: </h2>
 <p>
-  <strong>Latitude:</strong>
-  <%= @store.latitude %>
+    <strong>Name:</strong>
+    <%= @store.name %>
 </p>
-
 <p>
-  <strong>Longitude:</strong>
-  <%= @store.longitude %>
+    <strong>Latitude:</strong>
+    <%= @store.latitude %>
 </p>
-<h2>Listing drugs</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>Drug name</th>
-      <th>Price</th>
-      <th>Store_id</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @drugs.each do |drug| %>
-      <tr>
-        <td><%= drug.drug_name %></td>
-        <td><strong><%= number_to_currency(drug.price) %></strong></td>
-        <td><%= drug.store_id %></td>
-        
-        
-        <td><%= link_to 'Show', drug %></td>
-        <td><%= link_to 'Edit', edit_drug_path(drug) %></td>
-        <td><%= link_to 'Destroy', drug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<p>
+    <strong>Longitude:</strong>
+    <%= @store.longitude %>
+</p>
+<h2>Drugs available in store:</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Drug name</th>
+            <th>Price</th>
+            <th>Store_id</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @drugs.each do |drug| %>
+            <tr>
+                <td>
+                    <%= drug.drug_name %>
+                </td>
+                <td><strong><%= number_to_currency(drug.price) %></strong></td>
+                <td>
+                    <%= drug.store_id %>
+                </td>
+                <td>
+                    <%= link_to 'Show', drug %>
+                </td>
+                <td>
+                    <%= link_to 'Edit', edit_drug_path(drug) %>
+                </td>
+                <td>
+                    <%= link_to 'Destroy', drug, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </td>
+            </tr>
+            <% end %>
+    </tbody>
 </table>
-
 <br>
-
-
 <%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+    <%= link_to 'Back', stores_path %>

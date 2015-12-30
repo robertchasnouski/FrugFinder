@@ -21,10 +21,10 @@ class DrugsController < ApplicationController
   def create
     @store=Store.find(params[:store_id])
     @drug = @store.drugs.build(drug_params)
-    
+
     respond_to do |format|
       if @drug.save
-        format.html { redirect_to @drug, notice: 'Drug was successfully created.' }
+        format.html { redirect_to store_path(@store.id), notice: 'Drug was successfully created.' }
         format.json { render action: 'show', status: :created, location: @drug }
       else
         format.html { render action: 'new' }

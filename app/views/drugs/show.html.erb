@@ -1,15 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Drug name:</strong>
-  <%= @drug.drug_name %>
+<p id="notice">
+    <%= notice %>
 </p>
-
 <p>
-  <strong>Price:</strong>
-  $<%= number_to_currency(@drug.price) %>
+    <strong>Drug name:</strong>
+    <%= @drug.drug_name %>
 </p>
-
-
-
-<%= link_to 'Edit', edit_drug_path(@drug) %> 
+<p>
+    <strong>Price:</strong>
+    <%= number_to_currency(@drug.price) %>
+</p>
+<%= link_to 'Edit', edit_drug_path(@drug) %>

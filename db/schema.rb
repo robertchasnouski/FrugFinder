@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151227213700) do
+ActiveRecord::Schema.define(version: 20151229152532) do
 
   create_table "drugs", force: true do |t|
     t.string   "drug_name"
-    t.decimal  "price",      precision: 8, scale: 2
+    t.decimal  "price",       precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "store_id"
+    t.string   "description"
   end
 
   add_index "drugs", ["store_id"], name: "index_drugs_on_store_id"
