@@ -15,6 +15,15 @@ class DrugsController < ApplicationController
     @drug = @store.drugs.build
   end
 
+
+  def finddrug
+
+  end
+
+  def findbyname
+    @drugs=Drug.where(drug_name: params[:name])
+  end
+
   def edit
   end
 
@@ -58,13 +67,13 @@ class DrugsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_drug
-      @drug = Drug.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_drug
+    @drug = Drug.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def drug_params
-      params.require(:drug).permit(:drug_name, :price)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def drug_params
+    params.require(:drug).permit(:drug_name, :price)
+  end
 end

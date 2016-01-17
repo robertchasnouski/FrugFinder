@@ -1,13 +1,18 @@
 Drugs::Application.routes.draw do
+
+
   resources :stores, shallow: true do
     resources :drugs#, only: [:index,:new, :create,  :update, :destroy]
   end
+  resources :drugs, path: '/finddrug', action:'finddrug', only:[:index]
+  resources :drugs, path: '/findbyname', action:'findbyname', only:[:index]
+  resources :users
   #resources :drugs, only: [:show,:edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'main#index'
+  root 'main#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
