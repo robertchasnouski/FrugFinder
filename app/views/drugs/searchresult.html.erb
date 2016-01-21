@@ -1,12 +1,12 @@
 <div class="center hero-unit">
-  <h1>Listing drugs</h1>
+  <h1>Available drugs near you</h1>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Drug id</th>
         <th>Drug name</th>
         <th>Price</th>
         <th>Store_id</th>
+        <th>Distance </th>
         <th></th>
         <th></th>
       </tr>
@@ -14,13 +14,12 @@
     <tbody>
       <% @drugs.each do |drug| %>
         <tr>
-          <td><%= drug.id %></td>
           <td><%= drug.drug_name %></td>
           <td><strong><%= number_to_currency(drug.price) %></strong></td>
           <td><%= drug.store_id %></td>
+          <td><%= '%.2f' % ((distance  [@user.latitude,@user.longitude],[Store.where(:id => drug.store_id).first.latitude,Store.where(:id => drug.store_id).first.longitude] )/1000)%> km</td>
+          <td></td>
           <td><%= link_to 'Show', drug %></td>
-          <td><%= link_to 'Edit', edit_drug_path(drug) %></td>
-          <td><%= link_to 'Destroy', drug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

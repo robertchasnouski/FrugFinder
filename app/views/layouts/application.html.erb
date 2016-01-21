@@ -23,16 +23,18 @@
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Home",   'http://0.0.0.0:3000/' %></li>
             <li><%= link_to "List Stores",   'http://0.0.0.0:3000/stores' %></li>
-            <li><%= link_to "Find drug",   'http://0.0.0.0:3000/finddrug' %></li>
+            <% if !signed_in? %>
+              <li><%= link_to "Identify",   'http://0.0.0.0:3000/users/new' %></li>
+            <%else %>
+              <li><%= link_to "Find drug",   user_drugs_path(current_user.id) %></li>
+              <li><%= link_to "Change location",   '#' %></li>
+            <% end -%>
           </ul>
         </nav>
       </div>
     </header>
     <div class="container">
       <%= yield %>
-      <div style='width: 800px;'>
-        <div id="map" style='width: 800px;height:400px;'></div>
-      </div>
     </div>
     <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" %>
     <%= javascript_include_tag "bootstrap.min.js" %>

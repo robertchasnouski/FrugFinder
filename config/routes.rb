@@ -1,12 +1,20 @@
 Drugs::Application.routes.draw do
 
+  resources :search_lines, only: [:index]
 
+  resources :users do
+    resources :drugs, path: '/finddrug', action:'finddrug', only:[:index]
+    resources :drugs, path: '/searchresult', action:'searchresult', only:[:index]
+  end
   resources :stores, shallow: true do
     resources :drugs#, only: [:index,:new, :create,  :update, :destroy]
   end
-  resources :drugs, path: '/finddrug', action:'finddrug', only:[:index]
-  resources :drugs, path: '/findbyname', action:'findbyname', only:[:index]
-  resources :users
+
+
+
+  resources :sessions, only: [:new,:create, :destroy]
+  match '/signup', to: 'users#new', via: 'get'
+  match '/destroy_all', to: 'users#destroy_all', via: 'delete'
   #resources :drugs, only: [:show,:edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

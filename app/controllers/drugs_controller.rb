@@ -20,8 +20,11 @@ class DrugsController < ApplicationController
 
   end
 
-  def findbyname
-    @drugs=Drug.where(drug_name: params[:name])
+  def searchresult
+    @search_line=SearchLine.new(:name =>  params[:name], :user_name =>current_user.name)
+    @search_line.save
+    @user=User.find(params[:user_id])
+    @drugs=Drug.where(:drug_name => params[:name])
   end
 
   def edit
@@ -67,7 +70,7 @@ class DrugsController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+
   def set_drug
     @drug = Drug.find(params[:id])
   end
@@ -76,4 +79,8 @@ class DrugsController < ApplicationController
   def drug_params
     params.require(:drug).permit(:drug_name, :price)
   end
+
+
+
+
 end
